@@ -4,6 +4,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,9 @@ public class TransbankRestClient<T, V> {
 
 
         public V execute(RequestDetails requestDetails, T requestClass, ResponseErrorHandler errorHandler, Class<V> responseClass) {
+
+            restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+
 
             restTemplate.setErrorHandler(errorHandler);
             HttpHeaders headers = new HttpHeaders();
