@@ -1,5 +1,7 @@
 package com.kdu.demo.controller;
 
+import com.kdu.demo.dto.ConfirmTransactionRequest;
+import com.kdu.demo.dto.ConfirmTransactionResponse;
 import com.kdu.demo.dto.InitTransactionRequest;
 import com.kdu.demo.dto.InitTransactionResponse;
 import com.kdu.demo.service.TbkNormalTransactionService;
@@ -25,6 +27,10 @@ public class TbkNormalTransactionController {
         return new ResponseEntity<>(tbkNormalTransactionService.initTransaction(request), HttpStatus.OK);
     }
 
-
+    @PutMapping("/confirm")
+    public ResponseEntity<ConfirmTransactionResponse> confirmTransaction(@RequestBody ConfirmTransactionRequest request){
+        logger.info("Peticion recibida "+request.toString());
+        return new ResponseEntity<>(tbkNormalTransactionService.confirmTransaction(request), HttpStatus.OK);
+    }
 
 }
