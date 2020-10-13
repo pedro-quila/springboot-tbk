@@ -10,7 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionService {
@@ -31,7 +33,9 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
                             ("https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1/init_transaction",
                                     HttpMethod.POST), initTransactionRequest, restResponseErrorHandler, InitTransactionResponse.class);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            logger.error("Excepcion ", e);
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR, "Falla al iniciar init transaction", e);
         }
     }
 }

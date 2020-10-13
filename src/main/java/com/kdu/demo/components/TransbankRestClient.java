@@ -1,5 +1,6 @@
 package com.kdu.demo.components;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -12,18 +13,21 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class TransbankRestClient<T, V> {
 
-        private final RestTemplate restTemplate = new RestTemplate();
+    @Value("${apikey}")
+    private String APIKEY;
 
+    @Value("${secret}")
+    private String SECRET;
 
-        public V execute(RequestDetails requestDetails, T requestClass, ResponseErrorHandler errorHandler, Class<V> responseClass) {
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    public V execute(RequestDetails requestDetails, T requestClass, ResponseErrorHandler errorHandler, Class<V> responseClass) {
 
             restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-
-
             restTemplate.setErrorHandler(errorHandler);
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Tbk-Api-Key-Id", "597026007976");
-            headers.add("Tbk-Api-Key-Secret", "asdsadasdasdsad");
+            headers.add("Tbk-Api-Key-Id", APIKEY);
+            headers.add("Tbk-Api-Key-Secret", SECRET);
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<T> entity = new HttpEntity<T>(requestClass, headers);
