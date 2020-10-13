@@ -47,7 +47,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
         } catch (Exception e) {
             logger.error("Excepcion ", e);
             throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, "Falla al iniciar init transaction", e);
+                    HttpStatus.INTERNAL_SERVER_ERROR, "Falla al iniciar transaccion", e);
         }
     }
 
@@ -61,7 +61,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
         } catch (Exception e) {
             logger.error("Excepcion ", e);
             throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, "Falla al iniciar init transaction", e);
+                    HttpStatus.INTERNAL_SERVER_ERROR, "Falla al confirmar transaccion", e);
         }
     }
 }
