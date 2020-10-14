@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kdu</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>tbk-rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tbk-pruebas</name>
 	<description>Demo project for Spring Boot</description>
