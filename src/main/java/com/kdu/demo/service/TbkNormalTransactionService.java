@@ -1,13 +1,11 @@
 package com.kdu.demo.service;
 
 
-import com.kdu.demo.dto.ConfirmTransactionRequest;
-import com.kdu.demo.dto.ConfirmTransactionResponse;
-import com.kdu.demo.dto.InitTransactionRequest;
-import com.kdu.demo.dto.InitTransactionResponse;
+import com.kdu.demo.dto.*;
 
 public interface TbkNormalTransactionService {
 
     InitTransactionResponse initTransaction(InitTransactionRequest initTransactionRequest);
+    InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest initMensualTransactionRequest);
     ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest confirmTransactionRequest);
 }
