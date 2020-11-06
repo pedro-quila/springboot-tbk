@@ -1,7 +1,7 @@
 package com.kdu.demo.service;
 
 
-import com.kdu.demo.dto.*;
+import com.kdu.demo.dto.NormalTransaction.*;
 
 public interface TbkNormalTransactionService {
 

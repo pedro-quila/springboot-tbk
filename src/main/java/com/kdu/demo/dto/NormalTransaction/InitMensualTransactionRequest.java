@@ -1,4 +1,6 @@
-package com.kdu.demo.dto;
+package com.kdu.demo.dto.NormalTransaction;
+
+import com.kdu.demo.dto.NormalTransaction.DetailMensualTransaction;
 
 import java.io.Serializable;
 

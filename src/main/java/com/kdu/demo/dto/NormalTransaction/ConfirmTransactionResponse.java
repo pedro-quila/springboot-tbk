@@ -1,4 +1,4 @@
-package com.kdu.demo.dto;
+package com.kdu.demo.dto.NormalTransaction;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,7 +9,8 @@ public class ConfirmTransactionResponse implements Serializable {
     private Integer amount;
     private String status;
     private String buy_order;
-    private String card_number;
+    private String session_id;
+    private DetailConfirmTransactionResponse card_detail;
     private Date accounting_date;
     private Date transaction_date;
     private String authorization_code;
@@ -21,15 +22,16 @@ public class ConfirmTransactionResponse implements Serializable {
     public ConfirmTransactionResponse() {
     }
 
-    public ConfirmTransactionResponse(Integer vci, Integer amount, String status, String buy_order, String card_number,
-                                      Date accounting_date, Date transaction_date, String authorization_code,
-                                      String payment_type_code, Integer response_code, Integer installments_amount,
-                                      Integer installments_number) {
+    public ConfirmTransactionResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
+                                      DetailConfirmTransactionResponse card_detail, Date accounting_date,
+                                      Date transaction_date, String authorization_code, String payment_type_code,
+                                      Integer response_code, Integer installments_amount, Integer installments_number) {
         this.vci = vci;
         this.amount = amount;
         this.status = status;
         this.buy_order = buy_order;
-        this.card_number = card_number;
+        this.session_id = session_id;
+        this.card_detail = card_detail;
         this.accounting_date = accounting_date;
         this.transaction_date = transaction_date;
         this.authorization_code = authorization_code;
@@ -71,12 +73,12 @@ public class ConfirmTransactionResponse implements Serializable {
         this.buy_order = buy_order;
     }
 
-    public String getCard_number() {
-        return card_number;
+    public DetailConfirmTransactionResponse getCard_detail() {
+        return card_detail;
     }
 
-    public void setCard_number(String card_number) {
-        this.card_number = card_number;
+    public void setCard_detail(DetailConfirmTransactionResponse card_detail) {
+        this.card_detail = card_detail;
     }
 
     public Date getAccounting_date() {
@@ -142,7 +144,7 @@ public class ConfirmTransactionResponse implements Serializable {
                 ", amount=" + amount +
                 ", status='" + status + '\'' +
                 ", buy_order='" + buy_order + '\'' +
-                ", card_number='" + card_number + '\'' +
+                ", card_detail=" + card_detail +
                 ", accounting_date=" + accounting_date +
                 ", transaction_date=" + transaction_date +
                 ", authorization_code='" + authorization_code + '\'' +

@@ -1,11 +1,10 @@
 package com.kdu.demo.controller;
 
-import com.kdu.demo.dto.*;
+import com.kdu.demo.dto.NormalTransaction.*;
 import com.kdu.demo.service.TbkNormalTransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +19,19 @@ public class TbkNormalTransactionController {
     @Autowired
     private TbkNormalTransactionService tbkNormalTransactionService;
 
-    @PostMapping("/init")
+    @Autowired
+    private TbkNormalTransactionService tbkMensualTransactionService;
+
+    @PostMapping("/initNormal")
     public ResponseEntity<InitTransactionResponse> postInitTransaction(@RequestBody InitTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(tbkNormalTransactionService.initTransaction(request), HttpStatus.OK);
+    }
+
+    @PostMapping("/initMensual")
+    public ResponseEntity<InitTransactionResponse> postInitMensualTransaction(@RequestBody InitMensualTransactionRequest request){
+        logger.info("Peticion recibida "+request.toString());
+        return new ResponseEntity<>(tbkMensualTransactionService.initMensualTransaction(request), HttpStatus.OK);
     }
 
     @PutMapping("/confirm")

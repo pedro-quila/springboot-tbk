@@ -3,7 +3,7 @@ package com.kdu.demo.service.impl;
 import com.kdu.demo.components.RequestDetails;
 import com.kdu.demo.components.RestResponseErrorHandler;
 import com.kdu.demo.components.TransbankRestClient;
-import com.kdu.demo.dto.*;
+import com.kdu.demo.dto.NormalTransaction.*;
 import com.kdu.demo.service.TbkNormalTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
