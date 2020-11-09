@@ -3,7 +3,7 @@ package com.kdu.demo.dto.NormalTransaction;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ConfirmTransactionResponse implements Serializable {
+public class TransactionStateResponse implements Serializable {
 
     private Integer vci;
     private Integer amount;
@@ -19,13 +19,13 @@ public class ConfirmTransactionResponse implements Serializable {
     private Integer installments_number;
     private Integer installments_amount;
 
-    public ConfirmTransactionResponse() {
+    public TransactionStateResponse() {
     }
 
-    public ConfirmTransactionResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
-                                      DetailCardTransaction card_detail, Date accounting_date,
-                                      Date transaction_date, String authorization_code, String payment_type_code,
-                                      Integer response_code, Integer installments_number, Integer installments_amount) {
+    public TransactionStateResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
+                                    DetailCardTransaction card_detail, Date accounting_date, Date transaction_date,
+                                    String authorization_code, String payment_type_code, Integer response_code,
+                                    Integer installments_number, Integer installments_amount) {
         this.vci = vci;
         this.amount = amount;
         this.status = status;
@@ -71,6 +71,14 @@ public class ConfirmTransactionResponse implements Serializable {
 
     public void setBuy_order(String buy_order) {
         this.buy_order = buy_order;
+    }
+
+    public String getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(String session_id) {
+        this.session_id = session_id;
     }
 
     public DetailCardTransaction getCard_detail() {
@@ -121,14 +129,6 @@ public class ConfirmTransactionResponse implements Serializable {
         this.response_code = response_code;
     }
 
-    public Integer getInstallments_amount() {
-        return installments_amount;
-    }
-
-    public void setInstallments_amount(Integer installments_amount) {
-        this.installments_amount = installments_amount;
-    }
-
     public Integer getInstallments_number() {
         return installments_number;
     }
@@ -137,9 +137,17 @@ public class ConfirmTransactionResponse implements Serializable {
         this.installments_number = installments_number;
     }
 
+    public Integer getInstallments_amount() {
+        return installments_amount;
+    }
+
+    public void setInstallments_amount(Integer installments_amount) {
+        this.installments_amount = installments_amount;
+    }
+
     @Override
     public String toString() {
-        return "ConfirmTransactionResponse{" +
+        return "TransactionStateResponse{" +
                 "vci=" + vci +
                 ", amount=" + amount +
                 ", status='" + status + '\'' +

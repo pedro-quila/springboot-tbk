@@ -2,15 +2,15 @@ package com.kdu.demo.dto.NormalTransaction;
 
 import java.io.Serializable;
 
-public class DetailConfirmTransactionResponse implements Serializable {
+public class DetailCardTransaction implements Serializable {
 
     private String card_number;
 
-    public DetailConfirmTransactionResponse(String card_number) {
+    public DetailCardTransaction(String card_number) {
         this.card_number = card_number;
     }
 
-    public DetailConfirmTransactionResponse() {
+    public DetailCardTransaction() {
     }
 
     public String getCard_number() {
