@@ -1,0 +1,12 @@
+package com.kdu.demo.service;
+
+import com.kdu.demo.dto.CompleteTransaction.*;
+
+public interface TbkCompleteTransactionService {
+
+    InitCompleteTransactionResponse initCompleteTransaction (InitCompleteTransactionRequest initCompleteTransactionRequest);
+    QuotaCompleteTransactionResponse quotaCompleteTransaction (QuotaCompleteTransactionRequest quotaCompleteTransactionRequest);
+    ConfirmCompleteTransactionResponse confirmCompleteTransaction(ConfirmCompleteTransactionRequest confirmCompleteTransactionRequest);
+    CompleteTransactionStateResponse completeTransactionState(CompleteTransactionStateRequest completeTransactionStateRequest);
+    RefundCompleteTransactionResponse refundCompleteTransaction(RefundCompleteTransactionRequest refundCompleteTransactionRequest);
+}

@@ -8,13 +8,13 @@ public class InitMallTransactionRequest implements Serializable {
     private String buy_order;
     private Integer session_id;
     private String return_url;
-    private ArrayList<MallTransactionDetails> details;
+    private ArrayList<InitMallTransactionDetails> details;
 
     public InitMallTransactionRequest() {
     }
 
     public InitMallTransactionRequest(String buy_order, Integer session_id, String return_url,
-                                      ArrayList<MallTransactionDetails> details) {
+                                      ArrayList<InitMallTransactionDetails> details) {
         this.buy_order = buy_order;
         this.session_id = session_id;
         this.return_url = return_url;
@@ -45,11 +45,11 @@ public class InitMallTransactionRequest implements Serializable {
         this.return_url = return_url;
     }
 
-    public ArrayList<MallTransactionDetails> getDetails() {
+    public ArrayList<InitMallTransactionDetails> getDetails() {
         return details;
     }
 
-    public void setDetails(ArrayList<MallTransactionDetails> details) {
+    public void setDetails(ArrayList<InitMallTransactionDetails> details) {
         this.details = details;
     }
 

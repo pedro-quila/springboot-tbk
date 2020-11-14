@@ -19,25 +19,48 @@ public class TbkNormalTransactionController {
     @Autowired
     private TbkNormalTransactionService tbkNormalTransactionService;
 
-    @Autowired
-    private TbkNormalTransactionService tbkMensualTransactionService;
-
     @PostMapping("/initNormal")
-    public ResponseEntity<InitTransactionResponse> postInitTransaction(@RequestBody InitTransactionRequest request){
+    public ResponseEntity<InitTransactionResponse> postInitTransaction(
+            @RequestBody InitTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
-        return new ResponseEntity<>(tbkNormalTransactionService.initTransaction(request), HttpStatus.OK);
+        return new ResponseEntity<>(
+                tbkNormalTransactionService.initTransaction(request),
+                HttpStatus.OK);
     }
 
     @PostMapping("/initMensual")
-    public ResponseEntity<InitTransactionResponse> postInitMensualTransaction(@RequestBody InitMensualTransactionRequest request){
+    public ResponseEntity<InitTransactionResponse> postInitMensualTransaction(
+            @RequestBody InitMensualTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
-        return new ResponseEntity<>(tbkMensualTransactionService.initMensualTransaction(request), HttpStatus.OK);
+        return new ResponseEntity<>(
+                tbkNormalTransactionService.initMensualTransaction(request),
+                HttpStatus.OK);
     }
 
     @PutMapping("/confirm")
-    public ResponseEntity<ConfirmTransactionResponse> confirmTransaction(@RequestBody ConfirmTransactionRequest request){
+    public ResponseEntity<ConfirmTransactionResponse> putConfirmTransaction(
+            @RequestBody ConfirmTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
-        return new ResponseEntity<>(tbkNormalTransactionService.confirmTransaction(request), HttpStatus.OK);
+        return new ResponseEntity<>(
+                tbkNormalTransactionService.confirmTransaction(request),
+                HttpStatus.OK);
     }
 
+    @GetMapping("/state")
+    public ResponseEntity<TransactionStateResponse> getTransactionState(
+            @RequestBody TransactionStateRequest request){
+        logger.info("Peticion recibida "+request.toString());
+        return new ResponseEntity<>(
+                tbkNormalTransactionService.transactionState(request),
+                HttpStatus.OK);
+    }
+
+    @PutMapping("/refund")
+    public ResponseEntity<RefundTransactionResponse> putRefundTransaction(
+            @RequestBody RefundTransactionRequest request){
+        logger.info("Peticion recibida "+request.toString());
+        return new ResponseEntity<>(
+                tbkNormalTransactionService.refundTransaction(request),
+                HttpStatus.OK);
+    }
 }

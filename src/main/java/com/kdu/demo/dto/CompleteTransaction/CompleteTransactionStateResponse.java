@@ -1,31 +1,34 @@
-package com.kdu.demo.dto.NormalTransaction;
+package com.kdu.demo.dto.CompleteTransaction;
+
+
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class ConfirmTransactionResponse implements Serializable {
+public class CompleteTransactionStateResponse implements Serializable {
 
     private Integer vci;
     private Integer amount;
     private String status;
     private String buy_order;
-    private String session_id;
-    private CardDetailNormalTransaction card_detail;
+    private Integer session_id;
+    private CardDetailCompleteTransaction card_detail;
     private Date accounting_date;
     private Date transaction_date;
     private String authorization_code;
     private String payment_type_code;
     private Integer response_code;
-    private Integer installments_number;
-    private Integer installments_amount;
+    private String installments_number;
 
-    public ConfirmTransactionResponse() {
+
+    public CompleteTransactionStateResponse() {
     }
 
-    public ConfirmTransactionResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
-                                      CardDetailNormalTransaction card_detail, Date accounting_date,
-                                      Date transaction_date, String authorization_code, String payment_type_code,
-                                      Integer response_code, Integer installments_number, Integer installments_amount) {
+    public CompleteTransactionStateResponse(Integer vci, Integer amount, String status, String buy_order,
+                                            Integer session_id, CardDetailCompleteTransaction card_detail,
+                                            Date accounting_date, Date transaction_date, String authorization_code,
+                                            String payment_type_code, Integer response_code, String installments_number) {
         this.vci = vci;
         this.amount = amount;
         this.status = status;
@@ -38,7 +41,6 @@ public class ConfirmTransactionResponse implements Serializable {
         this.payment_type_code = payment_type_code;
         this.response_code = response_code;
         this.installments_number = installments_number;
-        this.installments_amount = installments_amount;
     }
 
     public Integer getVci() {
@@ -73,11 +75,19 @@ public class ConfirmTransactionResponse implements Serializable {
         this.buy_order = buy_order;
     }
 
-    public CardDetailNormalTransaction getCard_detail() {
+    public Integer getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(Integer session_id) {
+        this.session_id = session_id;
+    }
+
+    public CardDetailCompleteTransaction getCard_detail() {
         return card_detail;
     }
 
-    public void setCard_detail(CardDetailNormalTransaction card_detail) {
+    public void setCard_detail(CardDetailCompleteTransaction card_detail) {
         this.card_detail = card_detail;
     }
 
@@ -121,38 +131,29 @@ public class ConfirmTransactionResponse implements Serializable {
         this.response_code = response_code;
     }
 
-    public Integer getInstallments_amount() {
-        return installments_amount;
-    }
-
-    public void setInstallments_amount(Integer installments_amount) {
-        this.installments_amount = installments_amount;
-    }
-
-    public Integer getInstallments_number() {
+    public String getInstallments_number() {
         return installments_number;
     }
 
-    public void setInstallments_number(Integer installments_number) {
+    public void setInstallments_number(String installments_number) {
         this.installments_number = installments_number;
     }
 
     @Override
     public String toString() {
-        return "ConfirmTransactionResponse{" +
+        return "CompleteTransactionStateResponse{" +
                 "vci=" + vci +
                 ", amount=" + amount +
                 ", status='" + status + '\'' +
                 ", buy_order='" + buy_order + '\'' +
-                ", session_id='" + session_id + '\'' +
+                ", session_id=" + session_id +
                 ", card_detail=" + card_detail +
                 ", accounting_date=" + accounting_date +
                 ", transaction_date=" + transaction_date +
                 ", authorization_code='" + authorization_code + '\'' +
                 ", payment_type_code='" + payment_type_code + '\'' +
                 ", response_code=" + response_code +
-                ", installments_number=" + installments_number +
-                ", installments_amount=" + installments_amount +
+                ", installments_number='" + installments_number + '\'' +
                 '}';
     }
 }

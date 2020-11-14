@@ -10,7 +10,7 @@ public class TransactionStateResponse implements Serializable {
     private String status;
     private String buy_order;
     private String session_id;
-    private DetailCardTransaction card_detail;
+    private CardDetailNormalTransaction card_detail;
     private Date accounting_date;
     private Date transaction_date;
     private String authorization_code;
@@ -23,7 +23,7 @@ public class TransactionStateResponse implements Serializable {
     }
 
     public TransactionStateResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
-                                    DetailCardTransaction card_detail, Date accounting_date, Date transaction_date,
+                                    CardDetailNormalTransaction card_detail, Date accounting_date, Date transaction_date,
                                     String authorization_code, String payment_type_code, Integer response_code,
                                     Integer installments_number, Integer installments_amount) {
         this.vci = vci;
@@ -81,11 +81,11 @@ public class TransactionStateResponse implements Serializable {
         this.session_id = session_id;
     }
 
-    public DetailCardTransaction getCard_detail() {
+    public CardDetailNormalTransaction getCard_detail() {
         return card_detail;
     }
 
-    public void setCard_detail(DetailCardTransaction card_detail) {
+    public void setCard_detail(CardDetailNormalTransaction card_detail) {
         this.card_detail = card_detail;
     }
 

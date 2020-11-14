@@ -1,16 +1,16 @@
-package com.kdu.demo.dto.NormalTransaction;
+package com.kdu.demo.dto.CompleteTransaction;
 
 import java.io.Serializable;
 
-public class DetailCardTransaction implements Serializable {
+public class CardDetailCompleteTransaction implements Serializable {
 
     private String card_number;
 
-    public DetailCardTransaction(String card_number) {
-        this.card_number = card_number;
+    public CardDetailCompleteTransaction() {
     }
 
-    public DetailCardTransaction() {
+    public CardDetailCompleteTransaction(String card_number) {
+        this.card_number = card_number;
     }
 
     public String getCard_number() {
@@ -23,7 +23,7 @@ public class DetailCardTransaction implements Serializable {
 
     @Override
     public String toString() {
-        return "DetailConfirmTransactionResponse{" +
+        return "CardDetailCompleteTransaction{" +
                 "card_number='" + card_number + '\'' +
                 '}';
     }
