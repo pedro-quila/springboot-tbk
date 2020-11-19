@@ -3,7 +3,7 @@ package com.kdu.demo.dto.NormalTransaction;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TransactionStateResponse implements Serializable {
+public class StateTransactionResponse implements Serializable {
 
     private Integer vci;
     private Integer amount;
@@ -19,13 +19,13 @@ public class TransactionStateResponse implements Serializable {
     private Integer installments_number;
     private Integer installments_amount;
 
-    public TransactionStateResponse() {
+    public StateTransactionResponse() {
     }
 
-    public TransactionStateResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
-                                    CardDetailNormalTransaction card_detail, Date accounting_date, Date transaction_date,
-                                    String authorization_code, String payment_type_code, Integer response_code,
-                                    Integer installments_number, Integer installments_amount) {
+    public StateTransactionResponse(Integer vci, Integer amount, String status, String buy_order, String session_id,
+                                    CardDetailNormalTransaction card_detail, Date accounting_date,
+                                    Date transaction_date, String authorization_code, String payment_type_code,
+                                    Integer response_code, Integer installments_number, Integer installments_amount) {
         this.vci = vci;
         this.amount = amount;
         this.status = status;

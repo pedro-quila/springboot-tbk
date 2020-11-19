@@ -2,7 +2,7 @@ package com.kdu.demo.dto.MallTransaction;
 
 import java.io.Serializable;
 
-public class MallTransactionDetails implements Serializable {
+public class ConfirmMallTransactionDetails implements Serializable {
 
     private Integer amount;
     private String status;
@@ -14,12 +14,12 @@ public class MallTransactionDetails implements Serializable {
     private String commerce_code;
     private String buy_order;
 
-    public MallTransactionDetails() {
+    public ConfirmMallTransactionDetails() {
     }
 
-    public MallTransactionDetails(Integer amount, String status, String authorization_code,
-                                  String payment_type_code, Integer response_code, Integer installments_number,
-                                  Integer installments_amount, String commerce_code, String buy_order) {
+    public ConfirmMallTransactionDetails(Integer amount, String status, String authorization_code,
+                                         String payment_type_code, Integer response_code, Integer installments_number,
+                                         Integer installments_amount, String commerce_code, String buy_order) {
         this.amount = amount;
         this.status = status;
         this.authorization_code = authorization_code;

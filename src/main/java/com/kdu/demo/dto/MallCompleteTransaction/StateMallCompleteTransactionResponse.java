@@ -1,29 +1,27 @@
-package com.kdu.demo.dto.MallTransaction;
+package com.kdu.demo.dto.MallCompleteTransaction;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ConfirmMallTransactionResponse implements Serializable {
+public class StateMallCompleteTransactionResponse implements Serializable {
 
     private Integer buy_order;
-    private Integer vci;
     private Integer session_id;
-    private CardDetailMallTransaction card_detail;
+    private CardDetailMallCompleteTransaction card_detail;
     private Date expiration_date;
     private Date accounting_date;
     private Date transaction_date;
-    private ArrayList<ConfirmMallTransactionDetails> details;
+    private ArrayList<ConfirmMallCompleteTransactionDetails> details;
 
-    public ConfirmMallTransactionResponse() {
+    public StateMallCompleteTransactionResponse() {
     }
 
-    public ConfirmMallTransactionResponse(Integer buy_order, Integer vci, Integer session_id,
-                                          CardDetailMallTransaction card_detail, Date expiration_date,
-                                          Date accounting_date, Date transaction_date,
-                                          ArrayList<ConfirmMallTransactionDetails> details) {
+    public StateMallCompleteTransactionResponse(Integer buy_order, Integer session_id,
+                                                CardDetailMallCompleteTransaction card_detail, Date expiration_date,
+                                                Date accounting_date, Date transaction_date,
+                                                ArrayList<ConfirmMallCompleteTransactionDetails> details) {
         this.buy_order = buy_order;
-        this.vci = vci;
         this.session_id = session_id;
         this.card_detail = card_detail;
         this.expiration_date = expiration_date;
@@ -40,14 +38,6 @@ public class ConfirmMallTransactionResponse implements Serializable {
         this.buy_order = buy_order;
     }
 
-    public Integer getVci() {
-        return vci;
-    }
-
-    public void setVci(Integer vci) {
-        this.vci = vci;
-    }
-
     public Integer getSession_id() {
         return session_id;
     }
@@ -56,11 +46,11 @@ public class ConfirmMallTransactionResponse implements Serializable {
         this.session_id = session_id;
     }
 
-    public CardDetailMallTransaction getCard_detail() {
+    public CardDetailMallCompleteTransaction getCard_detail() {
         return card_detail;
     }
 
-    public void setCard_detail(CardDetailMallTransaction card_detail) {
+    public void setCard_detail(CardDetailMallCompleteTransaction card_detail) {
         this.card_detail = card_detail;
     }
 
@@ -88,19 +78,18 @@ public class ConfirmMallTransactionResponse implements Serializable {
         this.transaction_date = transaction_date;
     }
 
-    public ArrayList<ConfirmMallTransactionDetails> getDetails() {
+    public ArrayList<ConfirmMallCompleteTransactionDetails> getDetails() {
         return details;
     }
 
-    public void setDetails(ArrayList<ConfirmMallTransactionDetails> details) {
+    public void setDetails(ArrayList<ConfirmMallCompleteTransactionDetails> details) {
         this.details = details;
     }
 
     @Override
     public String toString() {
-        return "ConfirmMallTransactionResponse{" +
+        return "MallCompleteTransactionStateResponse{" +
                 "buy_order=" + buy_order +
-                ", vci=" + vci +
                 ", session_id=" + session_id +
                 ", card_detail=" + card_detail +
                 ", expiration_date=" + expiration_date +

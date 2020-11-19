@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 public class RefundCompleteTransactionRequest implements Serializable {
 
-    private String token;
+    private InitCompleteTransactionResponse token;
     private Integer amount;
 
     public RefundCompleteTransactionRequest() {
     }
 
-    public RefundCompleteTransactionRequest(String token, Integer amount) {
+    public RefundCompleteTransactionRequest(InitCompleteTransactionResponse token, Integer amount) {
         this.token = token;
         this.amount = amount;
     }
 
-    public String getToken() {
+    public InitCompleteTransactionResponse getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(InitCompleteTransactionResponse token) {
         this.token = token;
     }
 

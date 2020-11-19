@@ -1,31 +1,41 @@
-package com.kdu.demo.dto.CompleteTransaction;
+package com.kdu.demo.dto.MallCompleteTransaction;
 
 import java.io.Serializable;
 
-public class ConfirmCompleteTransactionRequest implements Serializable {
+public class MallCompleteConfirmDetails implements Serializable {
 
-    private InitCompleteTransactionResponse token;
+    private Integer commerce_code;
+    private String buy_order;
     private Integer id_query_installments;
     private Integer deferred_period_index;
-    private Integer grace_period;
+    private Boolean grace_period;
 
-    public ConfirmCompleteTransactionRequest() {
+    public MallCompleteConfirmDetails() {
     }
 
-    public ConfirmCompleteTransactionRequest(InitCompleteTransactionResponse token, Integer id_query_installments,
-                                             Integer deferred_period_index, Integer grace_period) {
-        this.token = token;
+    public MallCompleteConfirmDetails(Integer commerce_code, String buy_order, Integer id_query_installments,
+                                      Integer deferred_period_index, Boolean grace_period) {
+        this.commerce_code = commerce_code;
+        this.buy_order = buy_order;
         this.id_query_installments = id_query_installments;
         this.deferred_period_index = deferred_period_index;
         this.grace_period = grace_period;
     }
 
-    public InitCompleteTransactionResponse getToken() {
-        return token;
+    public Integer getCommerce_code() {
+        return commerce_code;
     }
 
-    public void setToken(InitCompleteTransactionResponse token) {
-        this.token = token;
+    public void setCommerce_code(Integer commerce_code) {
+        this.commerce_code = commerce_code;
+    }
+
+    public String getBuy_order() {
+        return buy_order;
+    }
+
+    public void setBuy_order(String buy_order) {
+        this.buy_order = buy_order;
     }
 
     public Integer getId_query_installments() {
@@ -44,18 +54,19 @@ public class ConfirmCompleteTransactionRequest implements Serializable {
         this.deferred_period_index = deferred_period_index;
     }
 
-    public Integer getGrace_period() {
+    public Boolean getGrace_period() {
         return grace_period;
     }
 
-    public void setGrace_period(Integer grace_period) {
+    public void setGrace_period(Boolean grace_period) {
         this.grace_period = grace_period;
     }
 
     @Override
     public String toString() {
-        return "ConfirmCompleteTransactionRequest{" +
-                "token='" + token + '\'' +
+        return "MallCompleteConfirmDetails{" +
+                "commerce_code=" + commerce_code +
+                ", buy_order='" + buy_order + '\'' +
                 ", id_query_installments=" + id_query_installments +
                 ", deferred_period_index=" + deferred_period_index +
                 ", grace_period=" + grace_period +

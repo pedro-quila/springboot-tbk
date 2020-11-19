@@ -1,15 +1,15 @@
-package com.kdu.demo.dto.CompleteTransaction;
+package com.kdu.demo.dto.MallCompleteTransaction;
 
 import java.io.Serializable;
 
-public class CompleteTransactionStateRequest implements Serializable {
+public class InitMallCompleteTransactionResponse implements Serializable {
 
     private String token;
 
-    public CompleteTransactionStateRequest() {
+    public InitMallCompleteTransactionResponse() {
     }
 
-    public CompleteTransactionStateRequest(String token) {
+    public InitMallCompleteTransactionResponse(String token) {
         this.token = token;
     }
 
@@ -23,7 +23,7 @@ public class CompleteTransactionStateRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "CompleteTransactionStateRequest{" +
+        return "InitMallCompleteTransactionResponse{" +
                 "token='" + token + '\'' +
                 '}';
     }

@@ -24,7 +24,7 @@ public class TbkMallTransactionController {
             @RequestBody InitMallTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkMallTransactionService.initMallTransaction(request),
+                tbkMallTransactionService.initTransaction(request),
                 HttpStatus.OK);
     }
 
@@ -33,16 +33,16 @@ public class TbkMallTransactionController {
             @RequestBody ConfirmMallTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkMallTransactionService.confirmMallTransaction(request),
+                tbkMallTransactionService.confirmTransaction(request),
                 HttpStatus.OK);
     }
 
     @GetMapping("/stateMall")
-    public ResponseEntity<MallTransactionStateResponse> getMallTransactionState(
-            @RequestBody MallTransactionStateRequest request) {
+    public ResponseEntity<StateMallTransactionResponse> getMallTransactionState(
+            @RequestBody StateMallTransactionRequest request) {
         logger.info("Peticion recibida " + request.toString());
         return new ResponseEntity<>(
-                tbkMallTransactionService.mallTransactionState(request),
+                tbkMallTransactionService.stateTransaction(request),
                 HttpStatus.OK);
     }
 
@@ -51,7 +51,7 @@ public class TbkMallTransactionController {
             @RequestBody RefundMallTransactionRequest request){
         logger.info("Peticion recibida " + request.toString());
         return new ResponseEntity<>(
-                tbkMallTransactionService.refundMallTransaction(request),
+                tbkMallTransactionService.refundTransaction(request),
                 HttpStatus.OK);
     }
 

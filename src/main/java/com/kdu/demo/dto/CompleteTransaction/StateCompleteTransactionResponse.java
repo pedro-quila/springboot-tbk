@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CompleteTransactionStateResponse implements Serializable {
+public class StateCompleteTransactionResponse implements Serializable {
 
     private Integer vci;
     private Integer amount;
@@ -22,10 +22,10 @@ public class CompleteTransactionStateResponse implements Serializable {
     private String installments_number;
 
 
-    public CompleteTransactionStateResponse() {
+    public StateCompleteTransactionResponse() {
     }
 
-    public CompleteTransactionStateResponse(Integer vci, Integer amount, String status, String buy_order,
+    public StateCompleteTransactionResponse(Integer vci, Integer amount, String status, String buy_order,
                                             Integer session_id, CardDetailCompleteTransaction card_detail,
                                             Date accounting_date, Date transaction_date, String authorization_code,
                                             String payment_type_code, Integer response_code, String installments_number) {

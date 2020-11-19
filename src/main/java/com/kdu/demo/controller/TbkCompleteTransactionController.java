@@ -5,7 +5,6 @@ import com.kdu.demo.service.TbkCompleteTransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.support.ReflectiveConstructorResolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,7 @@ public class TbkCompleteTransactionController {
             @RequestBody InitCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkCompleteTransactionService.initCompleteTransaction(request),
+                tbkCompleteTransactionService.initTransaction(request),
                 HttpStatus.OK);
     }
 
@@ -34,7 +33,7 @@ public class TbkCompleteTransactionController {
             @RequestBody QuotaCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkCompleteTransactionService.quotaCompleteTransaction(request),
+                tbkCompleteTransactionService.quotaTransaction(request),
                 HttpStatus.OK);
     }
 
@@ -43,16 +42,16 @@ public class TbkCompleteTransactionController {
             @RequestBody ConfirmCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkCompleteTransactionService.confirmCompleteTransaction(request),
+                tbkCompleteTransactionService.confirmTransaction(request),
                 HttpStatus.OK);
     }
 
     @GetMapping("/stateComplete")
-    public ResponseEntity<CompleteTransactionStateResponse> getCompleteTransactionState(
-            @RequestBody CompleteTransactionStateRequest request){
+    public ResponseEntity<StateCompleteTransactionResponse> getCompleteTransactionState(
+            @RequestBody StateCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkCompleteTransactionService.completeTransactionState(request),
+                tbkCompleteTransactionService.stateTransaction(request),
                 HttpStatus.OK);
     }
 
@@ -61,7 +60,7 @@ public class TbkCompleteTransactionController {
             @RequestBody RefundCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
-                tbkCompleteTransactionService.refundCompleteTransaction(request),
+                tbkCompleteTransactionService.refundTransaction(request),
                 HttpStatus.OK);
     }
     /*

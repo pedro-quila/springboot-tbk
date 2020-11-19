@@ -2,22 +2,22 @@ package com.kdu.demo.dto.NormalTransaction;
 
 import java.io.Serializable;
 
-public class TransactionStateRequest implements Serializable {
+public class StateTransactionRequest implements Serializable {
 
-    private String token;
+    private InitTransactionResponse token;
 
-    public TransactionStateRequest() {
+    public StateTransactionRequest() {
     }
 
-    public TransactionStateRequest(String token) {
+    public StateTransactionRequest(InitTransactionResponse token) {
         this.token = token;
     }
 
-    public String getToken() {
+    public InitTransactionResponse getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(InitTransactionResponse token) {
         this.token = token;
     }
 

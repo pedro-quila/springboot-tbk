@@ -1,9 +1,9 @@
-package com.kdu.demo.dto.MallTransaction;
+package com.kdu.demo.dto.MallCompleteTransaction;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class RefundMallTransactionResponse implements Serializable {
+public class RefundMallCompleteTransactionResponse implements Serializable {
 
     private String type;
     private String authorization_code;
@@ -11,11 +11,11 @@ public class RefundMallTransactionResponse implements Serializable {
     private Integer nullified_amount;
     private Integer balance;
 
-    public RefundMallTransactionResponse() {
+    public RefundMallCompleteTransactionResponse() {
     }
 
-    public RefundMallTransactionResponse(String type, String authorization_code, Date authorization_date,
-                                         Integer nullified_amount, Integer balance) {
+    public RefundMallCompleteTransactionResponse(String type, String authorization_code, Date authorization_date,
+                                                 Integer nullified_amount, Integer balance) {
         this.type = type;
         this.authorization_code = authorization_code;
         this.authorization_date = authorization_date;
@@ -65,7 +65,7 @@ public class RefundMallTransactionResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "RefundMallTransactionResponse{" +
+        return "RefundMallCompleteTransactionResponse{" +
                 "type='" + type + '\'' +
                 ", authorization_code='" + authorization_code + '\'' +
                 ", authorization_date=" + authorization_date +

@@ -1,10 +1,7 @@
 package com.kdu.demo.service.impl;
 
-import com.kdu.demo.components.RequestDetails;
-import com.kdu.demo.components.RestResponseErrorHandler;
-import com.kdu.demo.components.TransbankRestClient;
-import com.kdu.demo.dto.Capture.CaptureTransactionRequest;
-import com.kdu.demo.dto.Capture.CaptureTransactionResponse;
+import com.kdu.demo.components.*;
+import com.kdu.demo.dto.CaptureTransaction.*;
 import com.kdu.demo.service.TbkCaptureTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,19 +15,19 @@ public class TbkCaptureTransactionServiceImpl implements TbkCaptureTransactionSe
     private String urlCapturePut;
 
     @Autowired
-    TransbankRestClient<CaptureTransactionRequest, CaptureTransactionResponse> transbankRestClientCapture;
+    TransbankRestClient<CaptureTransactionRequest, CaptureTransactionResponse> restClientCapture;
 
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
 
     //corregir concatenación
     @Override
-    public CaptureTransactionResponse captureTransaction(CaptureTransactionRequest captureTransactionRequest){
-        return transbankRestClientCapture.execute(
-                new RequestDetails(urlCapturePut.concat(
-                        captureTransactionRequest.getAuthorization_code()),
+    public CaptureTransactionResponse captureTransaction(CaptureTransactionRequest request){
+        return restClientCapture.execute(
+                new RequestDetails(
+                        urlCapturePut.concat(request.getAuthorization_code()),
                         HttpMethod.PUT),
-                captureTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 CaptureTransactionResponse.class);
 

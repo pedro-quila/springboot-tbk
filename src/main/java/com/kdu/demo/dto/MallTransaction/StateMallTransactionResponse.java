@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MallTransactionStateResponse implements Serializable {
+public class StateMallTransactionResponse implements Serializable {
 
     private Integer buy_order;
     private Integer vci;
@@ -13,14 +13,15 @@ public class MallTransactionStateResponse implements Serializable {
     private Date expiration_date;
     private Date accounting_date;
     private Date transaction_date;
-    private ArrayList<MallTransactionDetails> details;
+    private ArrayList<ConfirmMallTransactionDetails> details;
 
-    public MallTransactionStateResponse() {
+    public StateMallTransactionResponse() {
     }
 
-    public MallTransactionStateResponse(Integer buy_order, Integer vci, Integer session_id,
-                                        CardDetailMallTransaction card_detail, Date expiration_date, Date accounting_date,
-                                        Date transaction_date, ArrayList<MallTransactionDetails> details) {
+    public StateMallTransactionResponse(Integer buy_order, Integer vci, Integer session_id,
+                                        CardDetailMallTransaction card_detail, Date expiration_date,
+                                        Date accounting_date, Date transaction_date,
+                                        ArrayList<ConfirmMallTransactionDetails> details) {
         this.buy_order = buy_order;
         this.vci = vci;
         this.session_id = session_id;
@@ -87,11 +88,11 @@ public class MallTransactionStateResponse implements Serializable {
         this.transaction_date = transaction_date;
     }
 
-    public ArrayList<MallTransactionDetails> getDetails() {
+    public ArrayList<ConfirmMallTransactionDetails> getDetails() {
         return details;
     }
 
-    public void setDetails(ArrayList<MallTransactionDetails> details) {
+    public void setDetails(ArrayList<ConfirmMallTransactionDetails> details) {
         this.details = details;
     }
 

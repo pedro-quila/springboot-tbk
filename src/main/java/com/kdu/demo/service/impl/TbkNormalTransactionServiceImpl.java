@@ -1,8 +1,6 @@
 package com.kdu.demo.service.impl;
 
-import com.kdu.demo.components.RequestDetails;
-import com.kdu.demo.components.RestResponseErrorHandler;
-import com.kdu.demo.components.TransbankRestClient;
+import com.kdu.demo.components.*;
 import com.kdu.demo.dto.NormalTransaction.*;
 import com.kdu.demo.service.TbkNormalTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     private TransbankRestClient<ConfirmTransactionRequest, ConfirmTransactionResponse> transbankRestClientConfirm;
 
     @Autowired
-    private TransbankRestClient<TransactionStateRequest, TransactionStateResponse> transbankRestClientState;
+    private TransbankRestClient<StateTransactionRequest, StateTransactionResponse> transbankRestStateClient;
 
     @Autowired
     private TransbankRestClient<RefundTransactionRequest, RefundTransactionResponse> transbankRestClientRefund;
@@ -35,56 +33,60 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     private RestResponseErrorHandler restResponseErrorHandler;
 
     @Override
-    public InitTransactionResponse initTransaction(InitTransactionRequest initTransactionRequest) {
+    public InitTransactionResponse initTransaction(InitTransactionRequest request) {
         return transbankRestClientInitNormal.execute(
                 new RequestDetails(
                         urlTbkWebPay,
                         HttpMethod.POST),
-                initTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 InitTransactionResponse.class);
     }
 
     @Override
-    public InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest initMensualTransactionRequest) {
+    public InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest request) {
         return transbankRestClientInitMensual.execute(
                 new RequestDetails(
                         urlTbkWebPay,
                         HttpMethod.POST),
-                initMensualTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 InitTransactionResponse.class);
     }
 
     @Override
-    public ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest confirmTransactionRequest) {
+    public ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest request) {
         return transbankRestClientConfirm.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(confirmTransactionRequest.getToken()),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
                         HttpMethod.PUT),
-                confirmTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 ConfirmTransactionResponse.class);
     }
 
     @Override
-    public TransactionStateResponse transactionState(TransactionStateRequest transactionStateRequest){
-        return transbankRestClientState.execute(
+    public StateTransactionResponse transactionState(StateTransactionRequest request){
+        return transbankRestStateClient.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(transactionStateRequest.getToken()),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
                         HttpMethod.GET),
-                transactionStateRequest,
+                request,
                 restResponseErrorHandler,
-                TransactionStateResponse.class);
+                StateTransactionResponse.class);
     }
 
     @Override
-    public RefundTransactionResponse refundTransaction(RefundTransactionRequest refundTransactionRequest){
+    public RefundTransactionResponse refundTransaction(RefundTransactionRequest request){
         return transbankRestClientRefund.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(refundTransactionRequest.getToken()).concat("/refund"),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken())
+                                .concat("/refund"),
                         HttpMethod.PUT),
-                refundTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 RefundTransactionResponse.class);
     }

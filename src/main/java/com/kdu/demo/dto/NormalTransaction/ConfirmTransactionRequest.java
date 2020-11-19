@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class ConfirmTransactionRequest implements Serializable {
 
-    private String token;
+    private InitTransactionResponse token;
 
     public ConfirmTransactionRequest() {
     }
 
-    public ConfirmTransactionRequest(String token) {
+    public ConfirmTransactionRequest(InitTransactionResponse token) {
         this.token = token;
     }
 
-    public String getToken() {
+    public InitTransactionResponse getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(InitTransactionResponse token) {
         this.token = token;
     }
 

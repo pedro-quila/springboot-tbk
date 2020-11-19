@@ -4,9 +4,9 @@ import com.kdu.demo.dto.NormalTransaction.*;
 
 public interface TbkNormalTransactionService {
 
-    InitTransactionResponse initTransaction(InitTransactionRequest initTransactionRequest);
-    InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest initMensualTransactionRequest);
-    ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest confirmTransactionRequest);
-    TransactionStateResponse transactionState(TransactionStateRequest transactionStateRequest);
-    RefundTransactionResponse refundTransaction(RefundTransactionRequest refundTransactionRequest);
+    InitTransactionResponse initTransaction(InitTransactionRequest request);
+    InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest request);
+    ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest request);
+    StateTransactionResponse transactionState(StateTransactionRequest request);
+    RefundTransactionResponse refundTransaction(RefundTransactionRequest request);
 }

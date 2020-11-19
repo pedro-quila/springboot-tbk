@@ -1,8 +1,6 @@
 package com.kdu.demo.service.impl;
 
-import com.kdu.demo.components.RequestDetails;
-import com.kdu.demo.components.RestResponseErrorHandler;
-import com.kdu.demo.components.TransbankRestClient;
+import com.kdu.demo.components.*;
 import com.kdu.demo.dto.CompleteTransaction.*;
 import com.kdu.demo.service.TbkCompleteTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,78 +15,85 @@ public class TbkCompleteTransactionServiceImpl implements TbkCompleteTransaction
     private String urlTbkWebPay;
 
     @Autowired
-    private TransbankRestClient<InitCompleteTransactionRequest, InitCompleteTransactionResponse> restClientInitComplete;
+    private TransbankRestClient<InitCompleteTransactionRequest, InitCompleteTransactionResponse>
+            restClientInitComplete;
 
     @Autowired
-    private TransbankRestClient<QuotaCompleteTransactionRequest, QuotaCompleteTransactionResponse> restClientQuotaComplete;
+    private TransbankRestClient<QuotaCompleteTransactionRequest, QuotaCompleteTransactionResponse>
+            restClientQuotaComplete;
 
     @Autowired
-    private TransbankRestClient<ConfirmCompleteTransactionRequest, ConfirmCompleteTransactionResponse> restClientConfirmComplete;
+    private TransbankRestClient<ConfirmCompleteTransactionRequest, ConfirmCompleteTransactionResponse>
+            restClientConfirmComplete;
 
     @Autowired
-    private TransbankRestClient<CompleteTransactionStateRequest, CompleteTransactionStateResponse> restClientCompleteState;
+    private TransbankRestClient<StateCompleteTransactionRequest, StateCompleteTransactionResponse>
+            restClientStateComplete;
 
     @Autowired
-    private TransbankRestClient<RefundCompleteTransactionRequest, RefundCompleteTransactionResponse> restClientRefundComplete;
+    private TransbankRestClient<RefundCompleteTransactionRequest, RefundCompleteTransactionResponse>
+            restClientRefundComplete;
 
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
 
     @Override
-    public InitCompleteTransactionResponse initCompleteTransaction(
-            InitCompleteTransactionRequest initCompleteTransactionRequest) {
+    public InitCompleteTransactionResponse initTransaction(InitCompleteTransactionRequest request) {
         return restClientInitComplete.execute(
-                new RequestDetails(urlTbkWebPay,
+                new RequestDetails(
+                        urlTbkWebPay,
                         HttpMethod.POST),
-                initCompleteTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 InitCompleteTransactionResponse.class);
     }
 
     @Override
-    public QuotaCompleteTransactionResponse quotaCompleteTransaction(
-            QuotaCompleteTransactionRequest quotaCompleteTransactionRequest) {
+    public QuotaCompleteTransactionResponse quotaTransaction(QuotaCompleteTransactionRequest request) {
         return restClientQuotaComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(quotaCompleteTransactionRequest.getToken()).concat("/installments"),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken())
+                                .concat("/installments"),
                         HttpMethod.POST),
-                quotaCompleteTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 QuotaCompleteTransactionResponse.class);
     }
 
     @Override
-    public ConfirmCompleteTransactionResponse confirmCompleteTransaction(
-            ConfirmCompleteTransactionRequest confirmCompleteTransactionRequest) {
+    public ConfirmCompleteTransactionResponse confirmTransaction(ConfirmCompleteTransactionRequest request) {
         return restClientConfirmComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(confirmCompleteTransactionRequest.getToken()),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
                         HttpMethod.PUT),
-                confirmCompleteTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 ConfirmCompleteTransactionResponse.class);
     }
 
     @Override
-    public CompleteTransactionStateResponse completeTransactionState(
-            CompleteTransactionStateRequest completeTransactionStateRequest) {
-        return restClientCompleteState.execute(
+    public StateCompleteTransactionResponse stateTransaction(StateCompleteTransactionRequest request) {
+        return restClientStateComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(completeTransactionStateRequest.getToken()),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
                         HttpMethod.GET),
-                completeTransactionStateRequest,
+                request,
                 restResponseErrorHandler,
-                CompleteTransactionStateResponse.class);
+                StateCompleteTransactionResponse.class);
     }
 
     @Override
-    public RefundCompleteTransactionResponse refundCompleteTransaction(
-            RefundCompleteTransactionRequest refundCompleteTransactionRequest) {
+    public RefundCompleteTransactionResponse refundTransaction(RefundCompleteTransactionRequest request) {
         return restClientRefundComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(refundCompleteTransactionRequest.getToken()).concat("/refund"),
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()).
+                                concat("/refund"),
                         HttpMethod.PUT),
-                refundCompleteTransactionRequest,
+                request,
                 restResponseErrorHandler,
                 RefundCompleteTransactionResponse.class);
     }

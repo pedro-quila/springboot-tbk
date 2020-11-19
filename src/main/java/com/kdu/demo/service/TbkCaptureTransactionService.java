@@ -1,9 +1,9 @@
 package com.kdu.demo.service;
 
-import com.kdu.demo.dto.Capture.*;
+import com.kdu.demo.dto.CaptureTransaction.*;
 
 public interface TbkCaptureTransactionService {
 
-    CaptureTransactionResponse captureTransaction(CaptureTransactionRequest captureTransactionRequest);
+    CaptureTransactionResponse captureTransaction(CaptureTransactionRequest request);
 
 }

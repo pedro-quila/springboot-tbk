@@ -1,4 +1,4 @@
-package com.kdu.demo.dto.Capture;
+package com.kdu.demo.dto.CaptureTransaction;
 
 import java.io.Serializable;
 

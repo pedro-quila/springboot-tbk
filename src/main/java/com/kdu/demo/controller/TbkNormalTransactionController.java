@@ -47,8 +47,8 @@ public class TbkNormalTransactionController {
     }
 
     @GetMapping("/state")
-    public ResponseEntity<TransactionStateResponse> getTransactionState(
-            @RequestBody TransactionStateRequest request){
+    public ResponseEntity<StateTransactionResponse> getTransactionState(
+            @RequestBody StateTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());
         return new ResponseEntity<>(
                 tbkNormalTransactionService.transactionState(request),

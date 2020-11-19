@@ -1,8 +1,6 @@
 package com.kdu.demo.service.impl;
 
-import com.kdu.demo.components.RequestDetails;
-import com.kdu.demo.components.RestResponseErrorHandler;
-import com.kdu.demo.components.TransbankRestClient;
+import com.kdu.demo.components.*;
 import com.kdu.demo.dto.MallTransaction.*;
 import com.kdu.demo.service.TbkMallTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     private TransbankRestClient<ConfirmMallTransactionRequest, ConfirmMallTransactionResponse> restClientConfirmMall;
 
     @Autowired
-    private TransbankRestClient<MallTransactionStateRequest, MallTransactionStateResponse> restClientMallState;
+    private TransbankRestClient<StateMallTransactionRequest, StateMallTransactionResponse> restClientStateMall;
 
     @Autowired
     private TransbankRestClient<RefundMallTransactionRequest, RefundMallTransactionResponse> restClientRefundMall;
@@ -32,42 +30,49 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     private RestResponseErrorHandler restResponseErrorHandler;
 
     @Override
-    public InitMallTransactionResponse initMallTransaction(
-            InitMallTransactionRequest initMallTransactionRequest) {
+    public InitMallTransactionResponse initTransaction(InitMallTransactionRequest request) {
         return restClientInitMall.execute(
-                new RequestDetails(urlTbkWebPay, HttpMethod.POST),
-                initMallTransactionRequest,
+                new RequestDetails(
+                        urlTbkWebPay,
+                        HttpMethod.POST),
+                request,
                 restResponseErrorHandler,
                 InitMallTransactionResponse.class);
     }
 
     @Override
-    public ConfirmMallTransactionResponse confirmMallTransaction(
-            ConfirmMallTransactionRequest confirmMallTransactionRequest) {
+    public ConfirmMallTransactionResponse confirmTransaction(ConfirmMallTransactionRequest request) {
         return restClientConfirmMall.execute(
-                new RequestDetails(urlTbkWebPay.concat(confirmMallTransactionRequest.getToken()), HttpMethod.PUT),
-                confirmMallTransactionRequest,
+                new RequestDetails(
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
+                        HttpMethod.PUT),
+                request,
                 restResponseErrorHandler,
                 ConfirmMallTransactionResponse.class);
     }
 
     @Override
-    public MallTransactionStateResponse mallTransactionState(
-            MallTransactionStateRequest mallTransactionStateRequest) {
-        return restClientMallState.execute(
-                new RequestDetails(urlTbkWebPay.concat(mallTransactionStateRequest.getToken()), HttpMethod.GET),
-                mallTransactionStateRequest,
+    public StateMallTransactionResponse stateTransaction(StateMallTransactionRequest request) {
+        return restClientStateMall.execute(
+                new RequestDetails(
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken()),
+                        HttpMethod.GET),
+                request,
                 restResponseErrorHandler,
-                MallTransactionStateResponse.class);
+                StateMallTransactionResponse.class);
     }
 
     @Override
-    public RefundMallTransactionResponse refundMallTransaction(
-            RefundMallTransactionRequest refundMallTransactionRequest) {
+    public RefundMallTransactionResponse refundTransaction(RefundMallTransactionRequest request) {
         return restClientRefundMall.execute(
-                new RequestDetails(urlTbkWebPay.concat(
-                        (refundMallTransactionRequest.getToken()).toString()).concat("/refund"), HttpMethod.PUT),
-                refundMallTransactionRequest,
+                new RequestDetails(
+                        urlTbkWebPay.concat(
+                                request.getToken().getToken())
+                                .concat("/refund"),
+                        HttpMethod.PUT),
+                request,
                 restResponseErrorHandler,
                 RefundMallTransactionResponse.class);
     }

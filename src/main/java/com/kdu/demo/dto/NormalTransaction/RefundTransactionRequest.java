@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class RefundTransactionRequest implements Serializable {
 
-    private String token;
+    private InitTransactionResponse token;
     private Integer amount;
 
-    public RefundTransactionRequest(String token, Integer amount) {
+    public RefundTransactionRequest(InitTransactionResponse token, Integer amount) {
         this.token = token;
         this.amount = amount;
     }
@@ -15,7 +15,7 @@ public class RefundTransactionRequest implements Serializable {
     public RefundTransactionRequest() {
     }
 
-    public String getToken() {
+    public InitTransactionResponse getToken() {
         return token;
     }
 
@@ -27,7 +27,7 @@ public class RefundTransactionRequest implements Serializable {
         this.amount = amount;
     }
 
-    public void setToken(String token) {
+    public void setToken(InitTransactionResponse token) {
         this.token = token;
     }
 
