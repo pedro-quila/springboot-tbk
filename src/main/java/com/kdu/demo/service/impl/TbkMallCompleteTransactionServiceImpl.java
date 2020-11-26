@@ -37,6 +37,7 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
 
+
     @Override
     public InitMallCompleteTransactionResponse initTransaction(InitMallCompleteTransactionRequest request){
         return restClientInitMallComplete.execute(
@@ -52,8 +53,7 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public QuotaMallCompleteTransactionResponse quotaTransaction(QuotaMallCompleteTransactionRequest request) {
         return restClientQuotaMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken())
+                        urlTbkWebPay.concat(request.getToken().getToken())
                                 .concat("/installments"),
                         HttpMethod.POST),
                 request,
@@ -65,8 +65,7 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public ConfirmMallCompleteTransactionResponse confirmTransaction(ConfirmMallCompleteTransactionRequest request) {
         return restClientConfirmMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken()),
+                        urlTbkWebPay.concat(request.getToken().getToken()),
                                 HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
@@ -88,7 +87,9 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public RefundMallCompleteTransactionResponse refundTransaction(RefundMallCompleteTransactionRequest request) {
         return restClientRefundMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getBuy_order()),HttpMethod.PUT),
+                        urlTbkWebPay.concat(request.getToken().getToken())
+                                .concat("/refund"),
+                        HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
                 RefundMallCompleteTransactionResponse.class);

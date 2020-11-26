@@ -29,6 +29,7 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
 
+
     @Override
     public InitMallTransactionResponse initTransaction(InitMallTransactionRequest request) {
         return restClientInitMall.execute(
@@ -44,8 +45,7 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     public ConfirmMallTransactionResponse confirmTransaction(ConfirmMallTransactionRequest request) {
         return restClientConfirmMall.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken()),
+                        urlTbkWebPay.concat(request.getToken().getToken()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
@@ -56,8 +56,7 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     public StateMallTransactionResponse stateTransaction(StateMallTransactionRequest request) {
         return restClientStateMall.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken()),
+                        urlTbkWebPay.concat(request.getToken().getToken()),
                         HttpMethod.GET),
                 request,
                 restResponseErrorHandler,
@@ -68,8 +67,7 @@ public class TbkMallTransactionServiceImpl implements TbkMallTransactionService 
     public RefundMallTransactionResponse refundTransaction(RefundMallTransactionRequest request) {
         return restClientRefundMall.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken())
+                        urlTbkWebPay.concat(request.getToken().getToken())
                                 .concat("/refund"),
                         HttpMethod.PUT),
                 request,

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class RefundMallCompleteTransactionRequest implements Serializable {
 
+    private InitMallCompleteTransactionResponse token;
     private String buy_order;
     private Integer commerce_code;
     private Integer amount;
@@ -11,10 +12,20 @@ public class RefundMallCompleteTransactionRequest implements Serializable {
     public RefundMallCompleteTransactionRequest() {
     }
 
-    public RefundMallCompleteTransactionRequest(String buy_order, Integer commerce_code, Integer amount) {
+    public RefundMallCompleteTransactionRequest(InitMallCompleteTransactionResponse token, String buy_order,
+                                                Integer commerce_code, Integer amount) {
+        this.token = token;
         this.buy_order = buy_order;
         this.commerce_code = commerce_code;
         this.amount = amount;
+    }
+
+    public InitMallCompleteTransactionResponse getToken() {
+        return token;
+    }
+
+    public void setToken(InitMallCompleteTransactionResponse token) {
+        this.token = token;
     }
 
     public String getBuy_order() {
@@ -44,6 +55,7 @@ public class RefundMallCompleteTransactionRequest implements Serializable {
     @Override
     public String toString() {
         return "RefundMallCompleteTransactionRequest{" +
+                "token='" + token + '\'' +
                 "buy_order='" + buy_order + '\'' +
                 ", commerce_code=" + commerce_code +
                 ", amount=" + amount +

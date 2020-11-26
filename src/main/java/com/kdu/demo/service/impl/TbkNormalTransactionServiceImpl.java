@@ -32,6 +32,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
 
+
     @Override
     public InitTransactionResponse initTransaction(InitTransactionRequest request) {
         return transbankRestClientInitNormal.execute(
@@ -58,8 +59,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     public ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest request) {
         return transbankRestClientConfirm.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken()),
+                        urlTbkWebPay.concat(request.getToken().getToken()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
@@ -70,8 +70,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     public StateTransactionResponse transactionState(StateTransactionRequest request){
         return transbankRestStateClient.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken()),
+                        urlTbkWebPay.concat(request.getToken().getToken()),
                         HttpMethod.GET),
                 request,
                 restResponseErrorHandler,
@@ -82,8 +81,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     public RefundTransactionResponse refundTransaction(RefundTransactionRequest request){
         return transbankRestClientRefund.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(
-                                request.getToken().getToken())
+                        urlTbkWebPay.concat(request.getToken().getToken())
                                 .concat("/refund"),
                         HttpMethod.PUT),
                 request,

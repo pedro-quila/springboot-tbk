@@ -1,5 +1,6 @@
 package com.kdu.demo.dto.NormalTransaction;
 
+
 import java.io.Serializable;
 
 public class RefundTransactionRequest implements Serializable {

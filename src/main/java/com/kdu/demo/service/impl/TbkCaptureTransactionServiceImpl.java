@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TbkCaptureTransactionServiceImpl implements TbkCaptureTransactionService {
 
-    @Value("${putCapture}")
-    private String urlCapturePut;
+    @Value("${urlTbkWebPay}")
+    private String urlTbkWebPay;
 
     @Autowired
     TransbankRestClient<CaptureTransactionRequest, CaptureTransactionResponse> restClientCapture;
@@ -25,7 +25,7 @@ public class TbkCaptureTransactionServiceImpl implements TbkCaptureTransactionSe
     public CaptureTransactionResponse captureTransaction(CaptureTransactionRequest request){
         return restClientCapture.execute(
                 new RequestDetails(
-                        urlCapturePut.concat(request.getAuthorization_code()),
+                        urlTbkWebPay.concat(request.getAuthorization_code()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,

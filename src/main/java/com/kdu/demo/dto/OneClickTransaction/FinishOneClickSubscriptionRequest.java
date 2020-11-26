@@ -1,16 +1,15 @@
-package com.kdu.demo.dto.CompleteTransaction;
+package com.kdu.demo.dto.OneClickTransaction;
 
 import java.io.Serializable;
 
-
-public class InitCompleteTransactionResponse implements Serializable {
+public class FinishOneClickSubscriptionRequest implements Serializable {
 
     private String token;
 
-    public InitCompleteTransactionResponse() {
+    public FinishOneClickSubscriptionRequest() {
     }
 
-    public InitCompleteTransactionResponse(String token) {
+    public FinishOneClickSubscriptionRequest(String token) {
         this.token = token;
     }
 
@@ -24,7 +23,7 @@ public class InitCompleteTransactionResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "InitCompleteTransactionResponse{" +
+        return "FinishSubscriptionRequest{" +
                 "token='" + token + '\'' +
                 '}';
     }
