@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT})
-@RequestMapping("/mallcomplete-transaction")
+@RequestMapping("/mallComplete-transaction")
 public class TbkMallCompleteTransactionController {
 
     Logger logger = LoggerFactory.getLogger(TbkMallTransactionController.class);
