@@ -90,4 +90,13 @@ public class TbkOneClickTransactionController {
                 tbkOneClickTransactionService.refundOCMulticode(request),
                 HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteUser")
+    public ResponseEntity<DeleteOneClickUserResponse> deleteOCUser(
+            @RequestBody DeleteOneClickUserRequest request){
+        logger.info("Peticion recibida "+request.toString());
+        return new ResponseEntity<>(
+                tbkOneClickTransactionService.deleteUser(request),
+                HttpStatus.OK);
+    }
 }
