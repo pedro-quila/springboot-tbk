@@ -53,7 +53,8 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public QuotaMallCompleteTransactionResponse quotaTransaction(QuotaMallCompleteTransactionRequest request) {
         return restClientQuotaMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken())
+                        urlTbkWebPay.concat(
+                                "/"+request.getToken().getToken())
                                 .concat("/installments"),
                         HttpMethod.POST),
                 request,
@@ -76,7 +77,7 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public StateMallCompleteTransactionResponse stateTransaction(StateMallCompleteTransactionRequest request) {
         return restClientStateMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()),
+                        urlTbkWebPay.concat("/"+request.getToken().getToken()),
                         HttpMethod.GET),
                 request,
                 restResponseErrorHandler,
@@ -87,7 +88,8 @@ public class TbkMallCompleteTransactionServiceImpl implements TbkMallCompleteTra
     public RefundMallCompleteTransactionResponse refundTransaction(RefundMallCompleteTransactionRequest request) {
         return restClientRefundMallComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken())
+                        urlTbkWebPay.concat(
+                                "/"+request.getToken().getToken())
                                 .concat("/refund"),
                         HttpMethod.PUT),
                 request,

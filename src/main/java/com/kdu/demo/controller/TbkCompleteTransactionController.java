@@ -28,7 +28,7 @@ public class TbkCompleteTransactionController {
                 HttpStatus.OK);
     }
 
-    @PostMapping("/completeInstallments")
+    @PostMapping("/installmentsComplete")
     public ResponseEntity<QuotaCompleteTransactionResponse> postInstallmentsCompleteTransaction(
             @RequestBody QuotaCompleteTransactionRequest request){
         logger.info("Peticion recibida "+request.toString());

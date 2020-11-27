@@ -15,19 +15,19 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
     private String urlTbkWebPay;
 
     @Autowired
-    private TransbankRestClient<InitTransactionRequest, InitTransactionResponse> transbankRestClientInitNormal;
+    private TransbankRestClient<InitTransactionRequest, InitTransactionResponse> restClientInitNormal;
 
     @Autowired
-    private TransbankRestClient<InitMensualTransactionRequest, InitTransactionResponse> transbankRestClientInitMensual;
+    private TransbankRestClient<InitMensualTransactionRequest, InitTransactionResponse> restClientInitMensual;
 
     @Autowired
-    private TransbankRestClient<ConfirmTransactionRequest, ConfirmTransactionResponse> transbankRestClientConfirm;
+    private TransbankRestClient<ConfirmTransactionRequest, ConfirmTransactionResponse> restClientConfirm;
 
     @Autowired
-    private TransbankRestClient<StateTransactionRequest, StateTransactionResponse> transbankRestStateClient;
+    private TransbankRestClient<StateTransactionRequest, StateTransactionResponse> restStateClient;
 
     @Autowired
-    private TransbankRestClient<RefundTransactionRequest, RefundTransactionResponse> transbankRestClientRefund;
+    private TransbankRestClient<RefundTransactionRequest, RefundTransactionResponse> restClientRefund;
 
     @Autowired
     private RestResponseErrorHandler restResponseErrorHandler;
@@ -35,7 +35,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
 
     @Override
     public InitTransactionResponse initTransaction(InitTransactionRequest request) {
-        return transbankRestClientInitNormal.execute(
+        return restClientInitNormal.execute(
                 new RequestDetails(
                         urlTbkWebPay,
                         HttpMethod.POST),
@@ -46,7 +46,7 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
 
     @Override
     public InitTransactionResponse initMensualTransaction(InitMensualTransactionRequest request) {
-        return transbankRestClientInitMensual.execute(
+        return restClientInitMensual.execute(
                 new RequestDetails(
                         urlTbkWebPay,
                         HttpMethod.POST),
@@ -57,9 +57,9 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
 
     @Override
     public ConfirmTransactionResponse confirmTransaction(ConfirmTransactionRequest request) {
-        return transbankRestClientConfirm.execute(
+        return restClientConfirm.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()),
+                        urlTbkWebPay.concat("/"+request.getToken().getToken()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
@@ -68,9 +68,9 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
 
     @Override
     public StateTransactionResponse transactionState(StateTransactionRequest request){
-        return transbankRestStateClient.execute(
+        return restStateClient.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()),
+                        urlTbkWebPay.concat("/"+request.getToken().getToken()),
                         HttpMethod.GET),
                 request,
                 restResponseErrorHandler,
@@ -79,9 +79,10 @@ public class TbkNormalTransactionServiceImpl implements TbkNormalTransactionServ
 
     @Override
     public RefundTransactionResponse refundTransaction(RefundTransactionRequest request){
-        return transbankRestClientRefund.execute(
+        return restClientRefund.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken())
+                        urlTbkWebPay.concat(
+                                "/"+request.getToken().getToken())
                                 .concat("/refund"),
                         HttpMethod.PUT),
                 request,

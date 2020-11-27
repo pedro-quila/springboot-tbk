@@ -2,16 +2,16 @@ package com.kdu.demo.dto.OneClickTransaction;
 
 import java.io.Serializable;
 
-public class InitOneClickSubscriptionRequest implements Serializable {
+public class InitOneClickInscriptionRequest implements Serializable {
 
     private String username;
     private String email;
     private String response_url;
 
-    public InitOneClickSubscriptionRequest() {
+    public InitOneClickInscriptionRequest() {
     }
 
-    public InitOneClickSubscriptionRequest(String username, String email, String response_url) {
+    public InitOneClickInscriptionRequest(String username, String email, String response_url) {
         this.username = username;
         this.email = email;
         this.response_url = response_url;

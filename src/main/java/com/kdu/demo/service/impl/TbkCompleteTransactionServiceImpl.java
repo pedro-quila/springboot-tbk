@@ -53,7 +53,8 @@ public class TbkCompleteTransactionServiceImpl implements TbkCompleteTransaction
     public QuotaCompleteTransactionResponse quotaTransaction(QuotaCompleteTransactionRequest request) {
         return restClientQuotaComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken())
+                        urlTbkWebPay.concat(
+                                "/"+request.getToken().getToken())
                                 .concat("/installments"),
                         HttpMethod.POST),
                 request,
@@ -65,7 +66,7 @@ public class TbkCompleteTransactionServiceImpl implements TbkCompleteTransaction
     public ConfirmCompleteTransactionResponse confirmTransaction(ConfirmCompleteTransactionRequest request) {
         return restClientConfirmComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()),
+                        urlTbkWebPay.concat("/"+request.getToken().getToken()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,
@@ -76,7 +77,7 @@ public class TbkCompleteTransactionServiceImpl implements TbkCompleteTransaction
     public StateCompleteTransactionResponse stateTransaction(StateCompleteTransactionRequest request) {
         return restClientStateComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()),
+                        urlTbkWebPay.concat("/"+request.getToken().getToken()),
                         HttpMethod.GET),
                 request,
                 restResponseErrorHandler,
@@ -87,7 +88,8 @@ public class TbkCompleteTransactionServiceImpl implements TbkCompleteTransaction
     public RefundCompleteTransactionResponse refundTransaction(RefundCompleteTransactionRequest request) {
         return restClientRefundComplete.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getToken().getToken()).
+                        urlTbkWebPay.concat(
+                                "/"+request.getToken().getToken()).
                                 concat("/refund"),
                         HttpMethod.PUT),
                 request,

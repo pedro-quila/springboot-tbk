@@ -25,7 +25,7 @@ public class TbkCaptureTransactionServiceImpl implements TbkCaptureTransactionSe
     public CaptureTransactionResponse captureTransaction(CaptureTransactionRequest request){
         return restClientCapture.execute(
                 new RequestDetails(
-                        urlTbkWebPay.concat(request.getAuthorization_code()),
+                        urlTbkWebPay.concat("/"+request.getAuthorization_code()),
                         HttpMethod.PUT),
                 request,
                 restResponseErrorHandler,

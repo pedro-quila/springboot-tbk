@@ -2,15 +2,15 @@ package com.kdu.demo.dto.OneClickTransaction;
 
 import java.io.Serializable;
 
-public class InitOneClickSubscriptionResponse implements Serializable {
+public class InitOneClickInscriptionResponse implements Serializable {
 
     private String token;
     private String url_webpay;
 
-    public InitOneClickSubscriptionResponse() {
+    public InitOneClickInscriptionResponse() {
     }
 
-    public InitOneClickSubscriptionResponse(String token, String url_webpay) {
+    public InitOneClickInscriptionResponse(String token, String url_webpay) {
         this.token = token;
         this.url_webpay = url_webpay;
     }

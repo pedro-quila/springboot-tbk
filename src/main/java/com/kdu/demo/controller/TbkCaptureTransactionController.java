@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.PUT})
 @RequestMapping("/capture")
-public class TbkCaptureController {
+public class TbkCaptureTransactionController {
 }

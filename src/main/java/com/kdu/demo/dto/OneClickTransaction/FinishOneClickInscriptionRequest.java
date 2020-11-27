@@ -2,14 +2,14 @@ package com.kdu.demo.dto.OneClickTransaction;
 
 import java.io.Serializable;
 
-public class FinishOneClickSubscriptionRequest implements Serializable {
+public class FinishOneClickInscriptionRequest implements Serializable {
 
     private String token;
 
-    public FinishOneClickSubscriptionRequest() {
+    public FinishOneClickInscriptionRequest() {
     }
 
-    public FinishOneClickSubscriptionRequest(String token) {
+    public FinishOneClickInscriptionRequest(String token) {
         this.token = token;
     }
 
